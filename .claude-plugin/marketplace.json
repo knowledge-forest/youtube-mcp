@@ -5,13 +5,11 @@
     "email": "noreply@knowledge-forest.online"
   },
   "description": "YouTube watch tools for Claude Code — transcript, search, segment.",
-  "version": "0.1.0",
   "plugins": [
     {
       "name": "youtube-watch-mcp",
       "source": "./",
       "description": "Watch/read YouTube videos — clean transcripts, search, segment. Keyless.",
-      "version": "0.1.0",
       "license": "MIT"
     }
   ]
