@@ -3,7 +3,7 @@
 Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 
 ## Milestone 0 — Project setup
-- [x] `pyproject.toml`: uv, deps (yt-dlp, youtube-transcript-api), entry point `yt-core`
+- [x] `pyproject.toml`: uv, deps (yt-dlp, youtube-transcript-api), entry point `yt-mcp`
 - [x] Package skeleton `src/youtube_mcp/`
 - [x] `models.py`: dataclasses — `Info`, `Transcript`, `Segment` (`Hit` deferred to chunk.py)
 
@@ -35,7 +35,7 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 - [ ] Verify stdio transport with Claude Code
 
 ## Milestone 4 — Distribution
-- [ ] Publish to PyPI as `yt-core` (enables `uvx`)
+- [ ] Publish to PyPI as `youtube-mcp` (command `yt-mcp`) (enables `uvx`)
 - [ ] Plugin packaging: `.claude-plugin/plugin.json` (MCP + skill together)
 - [ ] `skill/SKILL.md` for Claude Code (run CLI + native Read/Grep)
 - [ ] README install commands verified on each client

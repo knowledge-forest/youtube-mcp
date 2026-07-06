@@ -7,7 +7,7 @@
 ### Claude Code
 
 ```bash
-claude mcp add youtube yt-core-mcp
+claude mcp add youtube -- uvx --from youtube-mcp yt-mcp serve
 ```
 
 ### Claude Desktop / Codex / other MCP clients
@@ -19,7 +19,7 @@ Add to the client's MCP config:
   "mcpServers": {
     "youtube": {
       "command": "uvx",
-      "args": ["yt-core-mcp"]
+      "args": ["--from", "youtube-mcp", "yt-mcp", "serve"]
     }
   }
 }
@@ -28,10 +28,10 @@ Add to the client's MCP config:
 ### CLI only
 
 ```bash
-uvx yt-core info "https://youtu.be/VIDEO_ID"
+uvx --from youtube-mcp yt-mcp info "https://youtu.be/VIDEO_ID"
 ```
 
-That's it. `uvx` pulls `yt-core`, `yt-dlp`, and dependencies into an isolated environment automatically. Nothing to install globally.
+That's it. `uvx` pulls `youtube-mcp`, `yt-dlp`, and dependencies into an isolated environment automatically. Nothing to install globally.
 
 > **Optional:** `ffmpeg` on PATH is required **only** for `--asr` (speech-to-text on caption-less videos). Core transcript extraction needs nothing.
 
@@ -40,7 +40,7 @@ That's it. `uvx` pulls `yt-core`, `yt-dlp`, and dependencies into an isolated en
 A YouTube Data API key is **not needed** to read videos. Add one only to enable cross-YouTube **search**:
 
 ```bash
-claude mcp add youtube -e YOUTUBE_API_KEY=your_key -- uvx yt-core-mcp
+claude mcp add youtube -e YOUTUBE_API_KEY=your_key -- uvx --from youtube-mcp yt-mcp serve
 ```
 
 Transcript extraction never uses the key (YouTube only allows caption download for video owners).
@@ -83,7 +83,7 @@ Backends:          youtube-transcript-api · yt-dlp · faster-whisper
 
 On yt-dlp failure the engine self-updates yt-dlp and retries once — most breakage is a stale yt-dlp.
 
-**Caching:** results are keyed by video ID under `~/.cache/yt-core/<id>/`. Repeat calls are instant.
+**Caching:** results are keyed by video ID under `~/.cache/youtube-mcp/<id>/`. Repeat calls are instant.
 
 **Cleaning:** auto-captions are de-duplicated (rolling-caption overlap removed), stripped of timestamps and `[Music]` noise, and whitespace-collapsed before the agent ever sees them.
 

@@ -1,10 +1,10 @@
 """CLI adapter — thin. Parse args, call core, format output.
 
 Commands:
-    yt-core info URL              -> title, duration, chapters, captions
-    yt-core transcript URL        -> clean transcript to file, print path + preview
-    yt-core search URL "query"    -> timestamped matching cues
-    yt-core segment URL START END -> text in a time range (seconds)
+    yt-mcp info URL              -> title, duration, chapters, captions
+    yt-mcp transcript URL        -> clean transcript to file, print path + preview
+    yt-mcp search URL "query"    -> timestamped matching cues
+    yt-mcp segment URL START END -> text in a time range (seconds)
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ def _cmd_segment(args: argparse.Namespace) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="yt-core", description="YouTube watch engine.")
+    parser = argparse.ArgumentParser(prog="yt-mcp", description="YouTube watch engine.")
     sub = parser.add_subparsers(dest="command", required=True)
 
     lang = argparse.ArgumentParser(add_help=False)

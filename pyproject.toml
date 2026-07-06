@@ -8,7 +8,7 @@ license = { text = "MIT" }
 dependencies = ["yt-dlp>=2025.1.15", "youtube-transcript-api>=1.0.0"]
 
 [project.scripts]
-yt-core = "youtube_mcp.cli:main"
+yt-mcp = "youtube_mcp.cli:main"
 
 [build-system]
 requires = ["hatchling"]
