@@ -26,13 +26,17 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 > CLI now: `info` / `transcript` / `search` / `segment`.
 
 ## Milestone 2 — CLI adapter
-- [ ] `cli.py`: `info` / `transcript` / `search` / `segment`
-- [ ] File-output + preview behavior (path, not dump)
+- [x] `cli.py`: `info` / `transcript` / `search` / `segment` / `serve`
+- [x] File-output + preview behavior (path, not dump)
 
 ## Milestone 3 — MCP adapter
-- [ ] `mcp_server.py`: FastMCP, 4 tools
-- [ ] Register `search`-family tools only when API key present
-- [ ] Verify stdio transport with Claude Code
+- [x] `mcp_server.py`: FastMCP, 4 tools (get_info / get_transcript / search_transcript / get_segment)
+- [x] `yt-mcp serve` subcommand (stdio); `noprogress` keeps stdout pure JSON
+- [ ] Register `search_videos` only when API key present (deferred — needs the API-key path)
+- [ ] Verify stdio transport with a live Claude Code / Desktop client (local install)
+
+> **P2 done**: MCP server exposes 4 pull-based tools over the core engine.
+> Verified: tool list, tool execution, pure-JSON stdout (no yt-dlp leak), `♪` stripped.
 
 ## Milestone 4 — Distribution
 - [ ] Publish to PyPI as `youtube-mcp` (command `yt-mcp`) (enables `uvx`)
@@ -51,6 +55,8 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 - [ ] `get_playlist(url)` → video ids, loop existing tools
 - [ ] Cross-YouTube `search_videos` (API-key gated)
 - [ ] Remote HTTP MCP host option
+- [ ] `/summarize` add new commands to summarize video
+
 
 ## Non-goals (explicit)
 - No channel/creator CRM tools
