@@ -105,6 +105,7 @@ def _ytdlp_subs(video_id: str, langs: list[str], automatic: bool) -> Transcript 
             "outtmpl": os.path.join(tmp, "%(id)s.%(ext)s"),
             "quiet": True,
             "no_warnings": True,
+            "noprogress": True,
         }
         with yt_dlp.YoutubeDL(opts) as ydl:
             ydl.download([url])
@@ -181,7 +182,7 @@ def get_info(url: str) -> Info:
     import yt_dlp
 
     video_id = extract_video_id(url)
-    opts = {"skip_download": True, "quiet": True, "no_warnings": True}
+    opts = {"skip_download": True, "quiet": True, "no_warnings": True, "noprogress": True}
     with yt_dlp.YoutubeDL(opts) as ydl:
         data = ydl.extract_info(
             f"https://www.youtube.com/watch?v={video_id}", download=False
