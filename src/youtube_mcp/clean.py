@@ -15,6 +15,7 @@ from .models import Segment, Transcript
 
 _TAG_RE = re.compile(r"<[^>]+>")
 _NOISE_RE = re.compile(r"\[[^\]]*\]")  # [Music], [Applause], [ __ ]
+_MUSIC_RE = re.compile(r"[♪♫♬♩♭♯]")  # music-note glyphs in lyric captions
 _WS_RE = re.compile(r"\s+")
 
 
@@ -22,6 +23,7 @@ def clean_text(s: str) -> str:
     s = _TAG_RE.sub("", s)
     s = html.unescape(s)
     s = _NOISE_RE.sub(" ", s)
+    s = _MUSIC_RE.sub(" ", s)
     return _WS_RE.sub(" ", s).strip()
 
 
