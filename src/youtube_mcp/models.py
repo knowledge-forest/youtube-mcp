@@ -26,8 +26,8 @@ class Transcript:
 
     @property
     def text(self) -> str:
-        """Plain text, one cue per line. Cleaning happens later (P1)."""
-        return "\n".join(s.text for s in self.segments if s.text)
+        """Continuous prose. Cues joined by spaces (post-clean)."""
+        return " ".join(s.text for s in self.segments if s.text)
 
     @property
     def word_count(self) -> int:
@@ -41,3 +41,12 @@ class Info:
     duration: int | None  # seconds
     has_captions: bool
     chapters: list[dict] = field(default_factory=list)
+
+
+@dataclass
+class Hit:
+    """A search match inside a transcript."""
+
+    text: str
+    start: float  # seconds
+    timestamp: str  # h:mm:ss or m:ss
