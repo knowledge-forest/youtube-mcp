@@ -1,6 +1,8 @@
 # Youtube MCP
 
-> Fast, minimal YouTube "watch" engine for AI agents. Extract clean transcripts, search, and slice any YouTube video — no API key required, no manual setup.
+> Fast, minimal, and reliable YouTube MCP for AI agents.
+
+![Banner](./public/Youtube-MCP-banner.png)
 
 ## Install
 
