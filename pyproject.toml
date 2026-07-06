@@ -11,6 +11,12 @@ dependencies = ["yt-dlp>=2025.1.15", "youtube-transcript-api>=1.0.0", "mcp>=1.2.
 youtube-watch-mcp = "youtube_mcp.mcp_server:serve"   # `uvx youtube-watch-mcp` -> MCP server (name == package)
 youtube-watch-mcp-cli = "youtube_mcp.cli:main"       # human CLI: info / transcript / search / segment
 
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"

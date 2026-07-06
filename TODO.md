@@ -53,10 +53,12 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 > depends on PyPI publish (P4) for `uvx yt-mcp` to resolve.
 
 ## Milestone 5 — Tests
-- [ ] `test_clean.py`: dedup golden tests (critical)
-- [ ] `test_fetch.py`: mocked fallback chain
-- [ ] `test_cache.py`: hit/miss behavior
-- [ ] E2E test in Claude Code, Desktop, Codex
+- [x] `test_clean.py`: dedup golden tests (critical) — 6
+- [x] `test_fetch.py`: id parsing, VTT parse, mocked fallback chain — 11
+- [x] `test_cache.py`: store/load round-trip + miss — 3
+- [x] `test_chunk.py`: timestamp fmt, search, segment range — 8
+- [x] pytest wired (`[dependency-groups] dev`, `uv run pytest`) — 28 passing, network-free
+- [ ] E2E test in Claude Code (done ✅), Desktop, Codex
 
 ## Milestone 6 — Optional / v2
 - [ ] `--asr`: audio download + faster-whisper (caption-less videos)
