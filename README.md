@@ -7,7 +7,7 @@
 ### Claude Code
 
 ```bash
-claude mcp add youtube -- uvx --from youtube-mcp yt-mcp serve
+claude mcp add youtube -- uvx youtube-mcp
 ```
 
 ### Claude Desktop / Codex / other MCP clients
@@ -19,7 +19,7 @@ Add to the client's MCP config:
   "mcpServers": {
     "youtube": {
       "command": "uvx",
-      "args": ["--from", "youtube-mcp", "yt-mcp", "serve"]
+      "args": ["youtube-mcp"]
     }
   }
 }
@@ -40,7 +40,7 @@ That's it. `uvx` pulls `youtube-mcp`, `yt-dlp`, and dependencies into an isolate
 A YouTube Data API key is **not needed** to read videos. Add one only to enable cross-YouTube **search**:
 
 ```bash
-claude mcp add youtube -e YOUTUBE_API_KEY=your_key -- uvx --from youtube-mcp yt-mcp serve
+claude mcp add youtube -e YOUTUBE_API_KEY=your_key -- uvx youtube-mcp
 ```
 
 Transcript extraction never uses the key (YouTube only allows caption download for video owners).

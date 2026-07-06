@@ -5,10 +5,11 @@ description = "Fast, minimal YouTube watch engine for AI agents — clean transc
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-dependencies = ["yt-dlp>=2025.1.15", "youtube-transcript-api>=1.0.0"]
+dependencies = ["yt-dlp>=2025.1.15", "youtube-transcript-api>=1.0.0", "mcp>=1.2.0"]
 
 [project.scripts]
-yt-mcp = "youtube_mcp.cli:main"
+yt-mcp = "youtube_mcp.cli:main"          # full CLI: info / transcript / search / segment / serve
+youtube-mcp = "youtube_mcp.mcp_server:serve"  # MCP server directly (so `uvx youtube-mcp` just works)
 
 [build-system]
 requires = ["hatchling"]
