@@ -80,4 +80,4 @@ green "-> uploading"
 uvx twine upload dist/*
 
 green "done. released $TAG"
-echo "verify: uvx --refresh youtube-watch-mcp-cli info 'https://youtu.be/jNQXAC9IVRw'"
+echo "verify: uvx --refresh --from youtube-watch-mcp youtube-watch-mcp-cli info 'https://youtu.be/jNQXAC9IVRw'"
