@@ -97,6 +97,11 @@ On yt-dlp failure the engine self-updates yt-dlp and retries once — most break
 - Python 3.11+ (managed automatically by `uvx`)
 - `ffmpeg` — optional, only for `--asr`
 
+## Docs
+
+- [FAQ](./docs/FAQ.md) — keyless? no-caption videos? `--from` gotcha? long-video handling?
+- [Architecture](./docs/ARCHITECTURE.md) — core/adapter split, fetch chain, the cleaning moat, cache.
+
 ## License
 
 MIT
