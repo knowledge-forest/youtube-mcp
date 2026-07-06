@@ -71,6 +71,13 @@ def _cmd_segment(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_serve(args: argparse.Namespace) -> int:
+    from .mcp_server import serve  # lazy: only import mcp when serving
+
+    serve()
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="yt-mcp", description="YouTube watch engine.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -97,6 +104,9 @@ def main(argv: list[str] | None = None) -> int:
     p_seg.add_argument("start", type=float)
     p_seg.add_argument("end", type=float)
     p_seg.set_defaults(func=_cmd_segment)
+
+    p_serve = sub.add_parser("serve", help="run the MCP server (stdio)")
+    p_serve.set_defaults(func=_cmd_serve)
 
     args = parser.parse_args(argv)
     try:
