@@ -73,3 +73,47 @@ def test_chain_all_fail_raises(monkeypatch):
     monkeypatch.setattr(fetch, "_from_ytdlp_manual", lambda v, l: (_ for _ in ()).throw(RuntimeError("nope")))
     with pytest.raises(FetchError):
         fetch.fetch_transcript("dQw4w9WgXcQ")
+
+
+# --- self-heal (upgrade yt-dlp + retry once) ------------------------------
+def test_ytdlp_call_retries_after_heal(monkeypatch):
+    from yt_dlp.utils import DownloadError
+
+    calls = {"n": 0}
+
+    def flaky():
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise DownloadError("unable to extract")
+        return "ok"
+
+    monkeypatch.setattr(fetch, "_heal_ytdlp", lambda: True)
+    assert fetch._ytdlp_call(flaky) == "ok"
+    assert calls["n"] == 2  # failed, healed, retried
+
+
+def test_ytdlp_call_reraises_when_heal_fails(monkeypatch):
+    from yt_dlp.utils import DownloadError
+
+    def always():
+        raise DownloadError("unable to extract")
+
+    monkeypatch.setattr(fetch, "_heal_ytdlp", lambda: False)  # no upgrade possible
+    with pytest.raises(DownloadError):
+        fetch._ytdlp_call(always)
+
+
+def test_heal_is_attempted_once(monkeypatch):
+    monkeypatch.setattr(fetch, "_healed_once", False)
+    ran = {"n": 0}
+
+    def fake_run(*a, **k):
+        ran["n"] += 1
+
+    monkeypatch.setattr(fetch.subprocess, "run", fake_run)
+    # reload of the real yt_dlp module is a no-op cost; stub it out
+    monkeypatch.setattr(fetch.importlib, "reload", lambda m: m)
+
+    assert fetch._heal_ytdlp() is True
+    assert fetch._heal_ytdlp() is False  # guard blocks the second attempt
+    assert ran["n"] == 1

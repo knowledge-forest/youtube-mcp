@@ -9,7 +9,7 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 
 ## Milestone 1 — Core engine (the value)
 - [x] `fetch.py`: fallback chain (transcript-api → yt-dlp auto → yt-dlp manual)
-- [ ] `fetch.py`: self-heal — update yt-dlp + retry once on failure
+- [x] `fetch.py`: self-heal — upgrade yt-dlp in place + retry once on `DownloadError` (once/process)
 - [x] `clean.py`: tier-1 — strip tags/noise markers/entities
 - [x] `clean.py`: rolling-caption dedup (biggest token win) — 64% on yt-dlp auto-VTT
 - [x] `cache.py`: video-id keyed disk cache (`~/.cache/youtube-mcp/<id>/`)
