@@ -39,10 +39,18 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 > Verified: tool list, tool execution, pure-JSON stdout (no yt-dlp leak), `♪` stripped.
 
 ## Milestone 4 — Distribution
-- [ ] Publish to PyPI as `youtube-mcp` (command `yt-mcp`) (enables `uvx`)
-- [ ] Plugin packaging: `.claude-plugin/plugin.json` (MCP + skill together)
-- [ ] `skill/SKILL.md` for Claude Code (run CLI + native Read/Grep)
-- [ ] README install commands verified on each client
+- [ ] Publish to PyPI as `yt-mcp` (server) + `yt-mcp-cli` (CLI) — enables plain `uvx yt-mcp`
+- [x] Plugin packaging: `.claude-plugin/plugin.json` (inline MCP server + skills dir)
+- [x] `.claude-plugin/marketplace.json` (repo-as-marketplace, source `./`)
+- [x] `skills/youtube-watch/SKILL.md` (pull-based workflow + CLI fallback)
+- [ ] README install commands verified on a live client
+
+> **Name collision fixed**: PyPI `youtube-mcp` is taken (a different RU transcript
+> server). Renamed dist to `yt-mcp` (free). Scripts: `yt-mcp` = MCP server,
+> `yt-mcp-cli` = CLI. Install = `uvx yt-mcp` (name == package, no flags).
+
+> **P3 done**: plugin + marketplace manifests valid, skill bundled. Install path
+> depends on PyPI publish (P4) for `uvx yt-mcp` to resolve.
 
 ## Milestone 5 — Tests
 - [ ] `test_clean.py`: dedup golden tests (critical)
