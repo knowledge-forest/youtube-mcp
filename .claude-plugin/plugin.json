@@ -1,0 +1,26 @@
+{
+  "name": "yt-mcp",
+  "description": "Watch/read YouTube videos in Claude — clean transcripts, search, and segment any video. Keyless, no manual setup.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Knowledge Forest",
+    "email": "noreply@knowledge-forest.online"
+  },
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "transcript",
+    "video",
+    "mcp",
+    "captions"
+  ],
+  "skills": "./skills/",
+  "mcpServers": {
+    "youtube": {
+      "command": "uvx",
+      "args": [
+        "yt-mcp"
+      ]
+    }
+  }
+}
