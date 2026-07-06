@@ -1,5 +1,5 @@
 [project]
-name = "youtube-mcp"
+name = "yt-mcp"
 version = "0.1.0"
 description = "Fast, minimal YouTube watch engine for AI agents — clean transcripts, no API key required."
 readme = "README.md"
@@ -8,8 +8,8 @@ license = { text = "MIT" }
 dependencies = ["yt-dlp>=2025.1.15", "youtube-transcript-api>=1.0.0", "mcp>=1.2.0"]
 
 [project.scripts]
-yt-mcp = "youtube_mcp.cli:main"          # full CLI: info / transcript / search / segment / serve
-youtube-mcp = "youtube_mcp.mcp_server:serve"  # MCP server directly (so `uvx youtube-mcp` just works)
+yt-mcp = "youtube_mcp.mcp_server:serve"  # `uvx yt-mcp` -> MCP server (name == package)
+yt-mcp-cli = "youtube_mcp.cli:main"      # human CLI: info / transcript / search / segment
 
 [build-system]
 requires = ["hatchling"]
