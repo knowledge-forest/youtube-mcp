@@ -43,7 +43,7 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 - [x] Plugin packaging: `.claude-plugin/plugin.json` (inline MCP server + skills dir)
 - [x] `.claude-plugin/marketplace.json` (repo-as-marketplace, source `./`)
 - [x] `skills/youtube-watch/SKILL.md` (pull-based workflow + CLI fallback)
-- [ ] README install commands verified on a live client
+- [x] README install commands verified on a live client
 
 > **Name collision fixed**: PyPI `youtube-mcp` is taken (a different RU transcript
 > server). Renamed dist to `yt-mcp` (free). Scripts: `yt-mcp` = MCP server,
@@ -56,6 +56,7 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 - [ ] `test_clean.py`: dedup golden tests (critical)
 - [ ] `test_fetch.py`: mocked fallback chain
 - [ ] `test_cache.py`: hit/miss behavior
+- [ ] E2E test in Claude Code, Desktop, Codex
 
 ## Milestone 6 — Optional / v2
 - [ ] `--asr`: audio download + faster-whisper (caption-less videos)
@@ -64,6 +65,7 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done
 - [ ] Cross-YouTube `search_videos` (API-key gated)
 - [ ] Remote HTTP MCP host option
 - [ ] `/summarize` add new commands to summarize video
+- [ ] Add the commandes
 
 
 ## Non-goals (explicit)
