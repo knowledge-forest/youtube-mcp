@@ -1,6 +1,6 @@
 ---
 name: youtube-watch
-description: Watch/read a YouTube video — pull its transcript, search it, or read a time range. Use when the user shares a YouTube URL and wants its content summarized, quoted, searched, or analyzed. Backed by the yt-mcp server (tools get_info / get_transcript / search_transcript / get_segment); falls back to the yt-mcp-cli command.
+description: Watch/read a YouTube video — pull its transcript, search it, or read a time range. Use when the user shares a YouTube URL and wants its content summarized, quoted, searched, or analyzed. Backed by the youtube-watch-mcp server (tools get_info / get_transcript / search_transcript / get_segment); falls back to the youtube-watch-mcp-cli command.
 ---
 
 # Watching a YouTube video
@@ -11,7 +11,7 @@ token budget.
 
 ## Decide the approach with `get_info` first
 
-Call `get_info(url)` (MCP) or `yt-mcp-cli info URL`. It returns title, duration,
+Call `get_info(url)` (MCP) or `youtube-watch-mcp-cli info URL`. It returns title, duration,
 chapters, and `has_captions` — cheap, no transcript. Use it to choose:
 
 - **Short video (< ~10 min)** → `get_transcript`, then read the whole file.
@@ -20,7 +20,7 @@ chapters, and `has_captions` — cheap, no transcript. Use it to choose:
 - **No captions** (`has_captions: false`) → transcript needs ASR (`--asr`, slower,
   opt-in); warn the user before doing it.
 
-## Tools (MCP server `yt-mcp`)
+## Tools (MCP server `youtube-watch-mcp`)
 
 | Tool | When |
 |------|------|
@@ -43,10 +43,10 @@ tool, or grep it — it's already de-duplicated and stripped of markup/noise.
 If the MCP server isn't connected, use the command directly:
 
 ```bash
-yt-mcp-cli info    "URL"
-yt-mcp-cli transcript "URL"          # -> prints cache path + preview
-yt-mcp-cli search  "URL" "query"     # -> [m:ss] snippet
-yt-mcp-cli segment "URL" 120 180     # -> text in [120s, 180s)
+youtube-watch-mcp-cli info    "URL"
+youtube-watch-mcp-cli transcript "URL"          # -> prints cache path + preview
+youtube-watch-mcp-cli search  "URL" "query"     # -> [m:ss] snippet
+youtube-watch-mcp-cli segment "URL" 120 180     # -> text in [120s, 180s)
 ```
 
 ## Answering the user
